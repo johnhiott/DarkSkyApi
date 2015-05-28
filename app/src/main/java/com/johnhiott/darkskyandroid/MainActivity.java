@@ -1,9 +1,13 @@
 package com.johnhiott.darkskyandroid;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.johnhiott.darkskyandroidlib.ForecastApi;
@@ -11,6 +15,8 @@ import com.johnhiott.darkskyandroidlib.Weather;
 import com.johnhiott.darkskyandroidlib.models.Request;
 import com.johnhiott.darkskyandroidlib.models.WeatherResponse;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -18,12 +24,17 @@ import retrofit.client.Response;
 
 public class MainActivity extends ActionBarActivity {
 
+    private static final String TAG = "MainActivity";
+
+    @InjectView(R.id.main_view_pager) ViewPager mViewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
 
-        ForecastApi.create("5f0c0745a2939e44dd79a189c5386962");
+        mViewPager.setAdapter(mPagerAdapter);
 
         Weather weather;
         weather = ForecastApi.getInstance().getRestAdapter().create(Weather.class);
@@ -32,42 +43,44 @@ public class MainActivity extends ActionBarActivity {
         request.setLat("32.00");
         request.setLng("-81.00");
 
-        weather.listRepos(request, new Callback<WeatherResponse>() {
+        weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
             public void success(WeatherResponse weatherResponse, Response response) {
-
-                Log.d("YOYZOYO", weatherResponse.getLatitude());
+                Log.d(TAG, "Successfully called: " + response.getUrl());
             }
 
             @Override
             public void failure(RetrofitError retrofitError) {
-                Log.d("YOYO", retrofitError.toString() + " :: " + retrofitError.getUrl());
+                Log.d(TAG, "Error while calling: " + retrofitError.getUrl());
+                Log.d(TAG, retrofitError.toString());
             }
         });
-
-
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+    private void loadSavedPlaces() {
+
+    }
+
+    private PagerAdapter mPagerAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+        @Override
+        public Fragment getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            return 0;
+        }
+    };
+
 }

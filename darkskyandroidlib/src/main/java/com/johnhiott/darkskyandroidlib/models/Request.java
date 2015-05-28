@@ -1,11 +1,16 @@
 package com.johnhiott.darkskyandroidlib.models;
 
+import android.util.Log;
+
 public class Request {
+
+    public static final String UNITS = "units";
+    public static final String SI_UNITS = "si";
+    public static final String US_UNITS = "us";
 
     private String mLat;
     private String mLng;
     private String mTime;
-    private boolean mUseTime = false;
 
     public String getLat() {
         return mLat;
@@ -31,13 +36,14 @@ public class Request {
         mTime = time;
     }
 
-    private boolean useTime() {
-        return "".equals(mTime);
+    private Boolean useTime() {
+        return mTime != null && !mTime.equals("");
     }
 
     @Override
     public String toString() {
         String params = mLat + "," + mLng;
+        Log.d("JOJO", useTime().toString());
         return  useTime() ?  params + "," + mTime : params;
     }
 }
