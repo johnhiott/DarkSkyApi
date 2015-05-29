@@ -2,51 +2,43 @@ package com.johnhiott.darkskyandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.MenuItem;
 
-import com.johnhiott.darkskyandroidlib.ForecastApi;
-import com.johnhiott.darkskyandroidlib.Weather;
+import com.johnhiott.darkskyandroidlib.RequestBuilder;
 import com.johnhiott.darkskyandroidlib.models.Request;
 import com.johnhiott.darkskyandroidlib.models.WeatherResponse;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
-
-    @InjectView(R.id.main_view_pager) ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
 
-        mViewPager.setAdapter(mPagerAdapter);
-
-        Weather weather;
-        weather = ForecastApi.getInstance().getRestAdapter().create(Weather.class);
+        final RequestBuilder weather = new RequestBuilder();
 
         Request request = new Request();
         request.setLat("32.00");
         request.setLng("-81.00");
+        request.setUnits(Request.SI_UNITS);
+        request.setLanguage(Request.LANG_PIG_LATIN);
+        request.addToExcludeBlock(Request.EXCLUDE_CURRENTLY);
+        request.addToExcludeBlock(Request.EXCLUDE_HOURLY);
 
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
             public void success(WeatherResponse weatherResponse, Response response) {
-                Log.d(TAG, "Successfully called: " + response.getUrl());
+                Log.d(TAG, "Temp: " + weatherResponse.getCurrently().getTemperature());
+                Log.d(TAG, "Summary: " + weatherResponse.getCurrently().getSummary());
+                Log.d(TAG, "Hourly Sum: " + weatherResponse.getHourly().getSummary());
+
             }
 
             @Override
@@ -56,31 +48,4 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void loadSavedPlaces() {
-
-    }
-
-    private PagerAdapter mPagerAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
-        @Override
-        public Fragment getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public int getCount() {
-            return 0;
-        }
-    };
-
 }
