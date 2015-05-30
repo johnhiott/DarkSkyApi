@@ -1,5 +1,9 @@
-Dark Sky Android Wrapper
+Dark Sky API Android Wrapper
 ------------------
+
+[Original API docs here](https://developer.forecast.io/docs/v2)
+
+
 #####Get API ready
 ```java
 @Override
