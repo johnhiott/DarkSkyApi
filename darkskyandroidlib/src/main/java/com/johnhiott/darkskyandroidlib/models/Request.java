@@ -104,7 +104,6 @@ public class Request {
         return mExcludeBlock.size() > 0 ? Joiner.on(",").join(mExcludeBlock) : null;
     }
 
-    /** @hide */
     @Override
     public String toString() {
         String params = mLat + "," + mLng;
