@@ -19,7 +19,17 @@ public class Request {
     public static final String UNITS_AUTO = "auto";
 
     private static final String LANGUAGE_KEY = "lang";
-    public static final String LANG_ES = "es";
+    public static final String LANGUAGE_BOSNIAN = "bs";
+    public static final String LANGUAGE_GERMAN = "de";
+    public static final String LANGUAGE_ENGLISH = "en";
+    public static final String LANG_SPANISH = "es";
+    public static final String LANG_FRENCH = "fr";
+    public static final String LANG_ITALIAN = "it";
+    public static final String LANG_DUTCH = "nl";
+    public static final String LANG_POLISH = "pl";
+    public static final String LANG_PORTUGUESE = "pt";
+    public static final String LANG_RUSSIAN = "ru";
+    public static final String LANG_TETUM = "tet";
     public static final String LANG_PIG_LATIN = "x-pig-latin";
 
     private static final String EXCLUDE_KEY = "exclude";
