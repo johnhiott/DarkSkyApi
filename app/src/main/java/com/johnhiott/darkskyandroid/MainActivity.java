@@ -22,12 +22,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final RequestBuilder weather = new RequestBuilder();
+        RequestBuilder weather = new RequestBuilder();
 
         Request request = new Request();
         request.setLat("32.00");
         request.setLng("-81.00");
-        request.setUnits(Request.SI_UNITS);
+        request.setUnits(Request.UNITS_SI);
         request.setLanguage(Request.LANG_PIG_LATIN);
         request.addToExcludeBlock(Request.EXCLUDE_CURRENTLY);
         request.addToExcludeBlock(Request.EXCLUDE_HOURLY);
