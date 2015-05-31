@@ -1,20 +1,21 @@
 package com.johnhiott.darkskyandroidlib.models;
 
-import android.util.Log;
-
 import com.google.common.base.Joiner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class Request {
 
     private static final String UNITS_KEY = "units";
     public enum Units {
-        SI("si"), US("us"), CA("ca"), UK("uk"), AUTO("auto");
+        SI("si"),
+        US("us"),
+        CA("ca"),
+        UK("uk"),
+        AUTO("auto");
         private String mValue;
         private Units(String value) {
             mValue = value;
@@ -50,21 +51,29 @@ public class Request {
     }
 
     private static final String EXCLUDE_KEY = "exclude";
-    /** Exclude the currently block */
-    public static final String EXCLUDE_CURRENTLY = "currently";
-    /** Exclude the minutely block */
-    public static final String EXCLUDE_MINUTELY = "minutely";
-    public static final String EXCLUDE_HOURLY = "hourly";
-    public static final String EXCLUDE_DAILY = "daily";
-    public static final String EXCLUDE_ALERTS = "alerts";
-    public static final String EXCLUDE_FLAGS = "flags";
+    public enum Block {
+        CURRENTLY("currently"),
+        MINUTELY("minutely"),
+        HOURLY("hourly"),
+        DAILY("daily"),
+        ALERTS("alerts"),
+        FLAGS("flags");
+        String mValue;
+        private Block (String value) {
+            mValue = value;
+        }
+        @Override
+        public String toString() {
+            return mValue;
+        }
+    }
 
     private String mLat;
     private String mLng;
     private String mTime;
     private Units mUnits;
     private Language mLanguage;
-    private List<String> mExcludeBlock = new ArrayList<String>();
+    private List<Block> mExcludeBlocks = new ArrayList<Block>();
 
     public String getLat() {
         return mLat;
@@ -110,13 +119,13 @@ public class Request {
         mLanguage = language;
     }
 
-    public void addToExcludeBlock(String exclude) {
-        mExcludeBlock.add(exclude);
+    public void addToExcludeBlock(Block exclude) {
+        mExcludeBlocks.add(exclude);
     }
 
-    public void removeFromExcludeBlock(String exclude) {
-        int index = mExcludeBlock.indexOf(exclude);
-        if (index != -1) mExcludeBlock.remove(index);
+    public void removeFromExcludeBlock(Block exclude) {
+        int index = mExcludeBlocks.indexOf(exclude);
+        if (index != -1) mExcludeBlocks.remove(index);
     }
 
     public Map<String, String> getQueryParams() {
@@ -128,7 +137,7 @@ public class Request {
     }
 
     private String getExcludeBlock() {
-        return mExcludeBlock.size() > 0 ? Joiner.on(",").join(mExcludeBlock) : null;
+        return mExcludeBlocks.size() > 0 ? Joiner.on(",").join(mExcludeBlocks) : null;
     }
 
     @Override
@@ -136,5 +145,4 @@ public class Request {
         String params = mLat + "," + mLng;
         return  useTime() ?  params + "," + mTime : params;
     }
-
 }
