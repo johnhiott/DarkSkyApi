@@ -8,29 +8,46 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Request {
 
     private static final String UNITS_KEY = "units";
-    public static final String UNITS_SI = "si";
-    public static final String UNITS_US = "us";
-    public static final String UNITS_CA = "ca";
-    public static final String UNITS_UK = "uk";
-    public static final String UNITS_AUTO = "auto";
+    public enum Units {
+        SI("si"), US("us"), CA("ca"), UK("uk"), AUTO("auto");
+        private String mValue;
+        private Units(String value) {
+            mValue = value;
+        }
+        @Override
+        public String toString() {
+            return mValue;
+        }
+    }
 
     private static final String LANGUAGE_KEY = "lang";
-    public static final String LANGUAGE_BOSNIAN = "bs";
-    public static final String LANGUAGE_GERMAN = "de";
-    public static final String LANGUAGE_ENGLISH = "en";
-    public static final String LANG_SPANISH = "es";
-    public static final String LANG_FRENCH = "fr";
-    public static final String LANG_ITALIAN = "it";
-    public static final String LANG_DUTCH = "nl";
-    public static final String LANG_POLISH = "pl";
-    public static final String LANG_PORTUGUESE = "pt";
-    public static final String LANG_RUSSIAN = "ru";
-    public static final String LANG_TETUM = "tet";
-    public static final String LANG_PIG_LATIN = "x-pig-latin";
+    public enum Language {
+        BOSNIAN("bs"),
+        GERMAN("de"),
+        ENGLISH("en"),
+        SPANISH("es"),
+        FRENCH("fr"),
+        ITALIAN("it"),
+        DUTCH("nl"),
+        POLISH("pl"),
+        PORTUGUESE("pt"),
+        RUSSIAN("ru"),
+        TETUM("tet"),
+        PIG_LATIN("x-pig-latin");
+        private String mValue;
+        private Language(String value) {
+            mValue = value;
+        }
+        @Override
+        public String toString() {
+            return mValue;
+        }
+    }
 
     private static final String EXCLUDE_KEY = "exclude";
     /** Exclude the currently block */
@@ -45,8 +62,8 @@ public class Request {
     private String mLat;
     private String mLng;
     private String mTime;
-    private String mUnits;
-    private String mLanguage;
+    private Units mUnits;
+    private Language mLanguage;
     private List<String> mExcludeBlock = new ArrayList<String>();
 
     public String getLat() {
@@ -77,19 +94,19 @@ public class Request {
         return mTime != null && !mTime.equals("");
     }
 
-    public String getUnits() {
+    public Units getUnits() {
         return mUnits;
     }
 
-    public void setUnits(String units) {
+    public void setUnits(Units units) {
         mUnits = units;
     }
 
-    public String getLanguage() {
+    public Language getLanguage() {
         return mLanguage;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Language language) {
         mLanguage = language;
     }
 
@@ -104,8 +121,8 @@ public class Request {
 
     public Map<String, String> getQueryParams() {
         Map<String, String> query = new HashMap<String, String>();
-        query.put(UNITS_KEY, mUnits);
-        query.put(LANGUAGE_KEY, mLanguage);
+        query.put(UNITS_KEY, mUnits.toString());
+        query.put(LANGUAGE_KEY, mLanguage.toString());
         query.put(EXCLUDE_KEY, getExcludeBlock());
         return query;
     }
