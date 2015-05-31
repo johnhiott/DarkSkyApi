@@ -27,10 +27,8 @@ public class MainActivity extends Activity {
         Request request = new Request();
         request.setLat("32.00");
         request.setLng("-81.00");
-        request.setUnits(Request.UNITS_SI);
-        request.setLanguage(Request.LANG_PIG_LATIN);
-        request.addToExcludeBlock(Request.EXCLUDE_CURRENTLY);
-        request.addToExcludeBlock(Request.EXCLUDE_HOURLY);
+        request.setUnits(Request.Units.US);
+        request.setLanguage(Request.Language.PIG_LATIN);
 
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
