@@ -119,11 +119,11 @@ public class Request {
         mLanguage = language;
     }
 
-    public void addToExcludeBlock(Block exclude) {
+    public void addExcludeBlock(Block exclude) {
         mExcludeBlocks.add(exclude);
     }
 
-    public void removeFromExcludeBlock(Block exclude) {
+    public void removeExcludeBlock(Block exclude) {
         int index = mExcludeBlocks.indexOf(exclude);
         if (index != -1) mExcludeBlocks.remove(index);
     }
