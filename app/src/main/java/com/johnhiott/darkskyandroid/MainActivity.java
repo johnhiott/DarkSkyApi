@@ -29,6 +29,8 @@ public class MainActivity extends Activity {
         request.setLng("-81.00");
         request.setUnits(Request.Units.US);
         request.setLanguage(Request.Language.PIG_LATIN);
+        request.addToExcludeBlock(Request.Block.CURRENTLY);
+        request.removeFromExcludeBlock(Request.Block.CURRENTLY);
 
         weather.getWeather(request, new Callback<WeatherResponse>() {
             @Override
@@ -36,7 +38,6 @@ public class MainActivity extends Activity {
                 Log.d(TAG, "Temp: " + weatherResponse.getCurrently().getTemperature());
                 Log.d(TAG, "Summary: " + weatherResponse.getCurrently().getSummary());
                 Log.d(TAG, "Hourly Sum: " + weatherResponse.getHourly().getSummary());
-
             }
 
             @Override
