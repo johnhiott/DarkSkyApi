@@ -1,6 +1,20 @@
 Dark Sky API Android Wrapper
 ------------------
 
+#####Install
+
+ - 	Add the following to your `build.gradle`:
+
+```java
+repositories {
+	    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+	    compile 'com.github.johnhiott:DarkSkyApi:v0.1'
+}
+
+```
 
 #####Get API ready
 ```java
