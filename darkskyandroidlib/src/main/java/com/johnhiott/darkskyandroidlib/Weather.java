@@ -9,6 +9,7 @@ import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import retrofit.http.QueryMap;
+import rx.Observable;
 
 public interface Weather {
 
@@ -17,5 +18,11 @@ public interface Weather {
 
     @GET("/{request}")
     void getWeather(@Path("request") Request params, @QueryMap Map<String,String> query, Callback<WeatherResponse> cb);
+
+    @GET("/{request}")
+    Observable<Weather> getWeather(@Path("request") Request params);
+
+    @GET("/{request}")
+    Observable<WeatherResponse> getWeather(@Path("request") Request params, @QueryMap Map<String,String> query);
 
 }
