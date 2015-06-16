@@ -14,13 +14,7 @@ import rx.Observable;
 public interface Weather {
 
     @GET("/{request}")
-    void getWeather(@Path("request") Request params, Callback<WeatherResponse> cb);
-
-    @GET("/{request}")
     void getWeather(@Path("request") Request params, @QueryMap Map<String,String> query, Callback<WeatherResponse> cb);
-
-    @GET("/{request}")
-    Observable<Weather> getWeather(@Path("request") Request params);
 
     @GET("/{request}")
     Observable<WeatherResponse> getWeather(@Path("request") Request params, @QueryMap Map<String,String> query);
