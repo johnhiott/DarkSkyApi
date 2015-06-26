@@ -12,7 +12,6 @@ public class WeatherResponse {
     private DataBlock minutely;
     private DataBlock hourly;
     private DataBlock daily;
-
     private List<AlertsBlock> alerts;
 
     public double getLatitude() {
