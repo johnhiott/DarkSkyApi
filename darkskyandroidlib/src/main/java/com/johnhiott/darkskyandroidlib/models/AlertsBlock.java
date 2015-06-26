@@ -1,6 +1,6 @@
 package com.johnhiott.darkskyandroidlib.models;
 
-public class AlertPoint {
+public class AlertsBlock {
 
     private String title;
     private long time;

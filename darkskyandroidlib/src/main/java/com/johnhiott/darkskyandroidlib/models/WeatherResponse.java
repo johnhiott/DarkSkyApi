@@ -13,7 +13,7 @@ public class WeatherResponse {
     private DataBlock hourly;
     private DataBlock daily;
 
-    private List<AlertPoint> alerts;
+    private List<AlertsBlock> alerts;
 
     public double getLatitude() {
         return latitude;
@@ -47,11 +47,11 @@ public class WeatherResponse {
         return daily;
     }
 
-    public List<AlertPoint> getAlerts() {
+    public List<AlertsBlock> getAlerts() {
         return alerts;
     }
 
-    public void setAlerts(List<AlertPoint> alerts) {
+    public void setAlerts(List<AlertsBlock> alerts) {
         this.alerts = alerts;
     }
 }
