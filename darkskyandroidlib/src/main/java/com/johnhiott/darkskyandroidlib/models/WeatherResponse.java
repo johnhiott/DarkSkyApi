@@ -1,5 +1,7 @@
 package com.johnhiott.darkskyandroidlib.models;
 
+import java.util.List;
+
 public class WeatherResponse {
 
     private double latitude;
@@ -10,6 +12,7 @@ public class WeatherResponse {
     private DataBlock minutely;
     private DataBlock hourly;
     private DataBlock daily;
+    private List<AlertsBlock> alerts;
 
     public double getLatitude() {
         return latitude;
@@ -41,5 +44,13 @@ public class WeatherResponse {
 
     public DataBlock getDaily() {
         return daily;
+    }
+
+    public List<AlertsBlock> getAlerts() {
+        return alerts;
+    }
+
+    public void setAlerts(List<AlertsBlock> alerts) {
+        this.alerts = alerts;
     }
 }
