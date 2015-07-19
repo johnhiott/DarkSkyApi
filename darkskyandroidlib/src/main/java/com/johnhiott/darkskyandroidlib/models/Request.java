@@ -137,7 +137,7 @@ public class Request {
     }
 
     private String getExcludeBlock() {
-        return mExcludeBlocks.size() > 0 ? Joiner.on(",").join(mExcludeBlocks) : null;
+        return mExcludeBlocks.size() > 0 ? TextUtils.join(",", mExcludeBlocks) : null;
     }
 
     @Override
