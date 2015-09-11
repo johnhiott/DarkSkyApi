@@ -1,6 +1,6 @@
 package com.johnhiott.darkskyandroidlib.models;
 
-import com.google.common.base.Joiner;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
