@@ -1,6 +1,9 @@
 Dark Sky API Android Wrapper
 ------------------
 
+[![Build Status](https://travis-ci.org/johnhiott/DarkSkyApi.png?branch=master)](https://travis-ci.org/johnhiott/DarkSkyApi)
+
+
 #####Install
 
  - 	Add the following to your `build.gradle`:
