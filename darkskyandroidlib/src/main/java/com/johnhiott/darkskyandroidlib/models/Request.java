@@ -76,7 +76,7 @@ public class Request {
     private Units mUnits;
     private Language mLanguage;
     private List<Block> mExcludeBlocks = new ArrayList<>();
-    private List<Block> mExtendBlocks = new ArrayList();
+    private List<Block> mExtendBlocks = new ArrayList<>();
 
     public String getLat() {
         return mLat;
