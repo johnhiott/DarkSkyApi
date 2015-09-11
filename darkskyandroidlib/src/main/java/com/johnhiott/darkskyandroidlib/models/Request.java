@@ -17,7 +17,7 @@ public class Request {
         UK("uk"),
         AUTO("auto");
         private String mValue;
-        private Units(String value) {
+        Units(String value) {
             mValue = value;
         }
         @Override
@@ -41,7 +41,7 @@ public class Request {
         TETUM("tet"),
         PIG_LATIN("x-pig-latin");
         private String mValue;
-        private Language(String value) {
+        Language(String value) {
             mValue = value;
         }
         @Override
@@ -59,7 +59,7 @@ public class Request {
         ALERTS("alerts"),
         FLAGS("flags");
         String mValue;
-        private Block (String value) {
+        Block (String value) {
             mValue = value;
         }
         @Override
@@ -73,7 +73,7 @@ public class Request {
     private String mTime;
     private Units mUnits;
     private Language mLanguage;
-    private List<Block> mExcludeBlocks = new ArrayList<Block>();
+    private List<Block> mExcludeBlocks = new ArrayList<>();
 
     public String getLat() {
         return mLat;
@@ -129,7 +129,7 @@ public class Request {
     }
 
     public Map<String, String> getQueryParams() {
-        Map<String, String> query = new HashMap<String, String>();
+        Map<String, String> query = new HashMap<>();
         query.put(UNITS_KEY, mUnits.toString());
         query.put(LANGUAGE_KEY, mLanguage.toString());
         query.put(EXCLUDE_KEY, getExcludeBlock());
