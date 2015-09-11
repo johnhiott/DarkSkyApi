@@ -51,6 +51,8 @@ public class Request {
     }
 
     private static final String EXCLUDE_KEY = "exclude";
+    private static final String EXTEND_KEY = "extend";
+
     public enum Block {
         CURRENTLY("currently"),
         MINUTELY("minutely"),
@@ -73,7 +75,8 @@ public class Request {
     private String mTime;
     private Units mUnits;
     private Language mLanguage;
-    private List<Block> mExcludeBlocks = new ArrayList<Block>();
+    private List<Block> mExcludeBlocks = new ArrayList<>();
+    private List<Block> mExtendBlocks = new ArrayList();
 
     public String getLat() {
         return mLat;
@@ -123,21 +126,30 @@ public class Request {
         mExcludeBlocks.add(exclude);
     }
 
+    public void addExtendBlock(Block extend) {
+        mExtendBlocks.add(extend);
+    }
+
     public void removeExcludeBlock(Block exclude) {
         int index = mExcludeBlocks.indexOf(exclude);
         if (index != -1) mExcludeBlocks.remove(index);
     }
 
     public Map<String, String> getQueryParams() {
-        Map<String, String> query = new HashMap<String, String>();
+        Map<String, String> query = new HashMap<>();
         query.put(UNITS_KEY, mUnits.toString());
         query.put(LANGUAGE_KEY, mLanguage.toString());
         query.put(EXCLUDE_KEY, getExcludeBlock());
+        query.put(EXTEND_KEY, getExtendBlocks());
         return query;
     }
 
     private String getExcludeBlock() {
         return mExcludeBlocks.size() > 0 ? TextUtils.join(",", mExcludeBlocks) : null;
+    }
+
+    private String getExtendBlocks() {
+        return mExtendBlocks.size() > 0 ? TextUtils.join(",", mExtendBlocks) : null;
     }
 
     @Override
