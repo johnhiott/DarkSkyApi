@@ -28,7 +28,7 @@ public class DataPoint {
     private String dewPoint;
     private String windSpeed;
     private String windBearing;
-    private String cloudClover;
+    private String cloudCover;
     private String humidity;
     private String pressure;
     private String visibility;
@@ -139,7 +139,7 @@ public class DataPoint {
     }
 
     public String getCloudClover() {
-        return cloudClover;
+        return cloudCover;
     }
 
     public String getHumidity() {
