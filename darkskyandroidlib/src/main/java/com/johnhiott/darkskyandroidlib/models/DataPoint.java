@@ -6,6 +6,7 @@ public class DataPoint {
     private String summary;
     private String icon;
     private String sunriseTime;
+    private String sunsetTime;
     private String moonPhase;
     private String nearestStormDistance;
     private String nearestStormBearing;
@@ -48,6 +49,10 @@ public class DataPoint {
 
     public String getSunriseTime() {
         return sunriseTime;
+    }
+
+    public String getSunsetTime() {
+        return sunsetTime;
     }
 
     public String getMoonPhase() {
