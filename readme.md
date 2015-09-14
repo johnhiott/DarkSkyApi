@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-	    compile 'com.github.johnhiott:DarkSkyApi:v0.1.2'
+	    compile 'com.github.johnhiott:DarkSkyApi:v0.1.3'
 }
 
 ```
