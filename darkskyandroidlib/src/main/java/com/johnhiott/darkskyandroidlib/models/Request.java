@@ -28,8 +28,10 @@ public class Request {
 
     private static final String LANGUAGE_KEY = "lang";
     public enum Language {
+        ARABIC("ar"),
         BOSNIAN("bs"),
         GERMAN("de"),
+        GREEK("el"),
         ENGLISH("en"),
         SPANISH("es"),
         FRENCH("fr"),
@@ -38,8 +40,13 @@ public class Request {
         POLISH("pl"),
         PORTUGUESE("pt"),
         RUSSIAN("ru"),
+        SLOVAK("sk"),
+        SWEDISH("sv"),
         TETUM("tet"),
-        PIG_LATIN("x-pig-latin");
+        TURKISH("tr"),
+        UKRAINIAN("uk"),
+        PIG_LATIN("x-pig-latin"),
+        CHINESE("zh");
         private String mValue;
         private Language(String value) {
             mValue = value;
