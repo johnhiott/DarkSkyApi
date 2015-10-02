@@ -35,6 +35,7 @@ public class Request {
         ENGLISH("en"),
         SPANISH("es"),
         FRENCH("fr"),
+        CROATIAN("hr"),
         ITALIAN("it"),
         DUTCH("nl"),
         POLISH("pl"),
@@ -46,7 +47,8 @@ public class Request {
         TURKISH("tr"),
         UKRAINIAN("uk"),
         PIG_LATIN("x-pig-latin"),
-        CHINESE("zh");
+        CHINESE("zh"),
+        CHINESE_TRADITIONAL("zh-tw");
         private String mValue;
         private Language(String value) {
             mValue = value;
