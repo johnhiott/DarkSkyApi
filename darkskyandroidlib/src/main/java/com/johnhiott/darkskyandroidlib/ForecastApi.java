@@ -7,7 +7,7 @@ public class ForecastApi {
     private static ForecastApi mInstance = null;
     private RestAdapter mRestAdapter;
 
-    private static final String BASE_API_URL = "https://api.forecast.io/forecast/";
+    private static final String BASE_API_URL = "https://api.darksky.net/forecast/";
 
     public static ForecastApi getInstance() {
         return mInstance;
