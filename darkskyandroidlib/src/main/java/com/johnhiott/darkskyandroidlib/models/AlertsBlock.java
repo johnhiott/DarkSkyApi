@@ -1,5 +1,7 @@
 package com.johnhiott.darkskyandroidlib.models;
 
+import java.util.List;
+
 public class AlertsBlock {
 
     private String title;
@@ -7,6 +9,8 @@ public class AlertsBlock {
     private long expires;
     private String description;
     private String uri;
+    private String severity;
+    private List<String> regions;
 
     public String getTitle() {
         return title;
@@ -46,5 +50,21 @@ public class AlertsBlock {
 
     public void setUri(String uri) {
         this.uri = uri;
+    }
+
+    public String getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
+    }
+
+    public List<String> getRegions() {
+        return regions;
+    }
+
+    public void setRegions(List<String> regions) {
+        this.regions = regions;
     }
 }
