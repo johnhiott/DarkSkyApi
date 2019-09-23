@@ -4,7 +4,7 @@ Dark Sky API Android Wrapper
 [![Build Status](https://travis-ci.org/johnhiott/DarkSkyApi.png?branch=master)](https://travis-ci.org/johnhiott/DarkSkyApi)
 
 
-#####Install
+##### Install
 
  - 	Add the following to your `build.gradle`:
 
@@ -19,7 +19,7 @@ dependencies {
 
 ```
 
-#####Get API ready
+##### Get API ready
 ```java
 @Override
 public void onCreate() {
@@ -29,7 +29,7 @@ public void onCreate() {
 ```
 
 
-#####Making a request
+##### Making a request
 ```java
 
 
@@ -57,7 +57,7 @@ weather.getWeather(request, new Callback<WeatherResponse>() {
 
 ```
 
-#####Proguard Configuration
+##### Proguard Configuration
 
 ```
 # DarkSkyApi models
