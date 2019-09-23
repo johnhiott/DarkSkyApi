@@ -57,5 +57,23 @@ weather.getWeather(request, new Callback<WeatherResponse>() {
 
 ```
 
+#####Proguard Configuration
+
+```
+# DarkSkyApi models
+-keep class com.johnhiott.darkskyandroidlib.models.**{ *; }
+
+# Retrofit 1.X for our DarkSkyApi
+
+-keep class com.squareup.okhttp.** { *; }
+-keep class retrofit.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+
+-dontwarn com.squareup.okhttp.**
+-dontwarn okio.**
+-dontwarn retrofit.**
+-dontwarn rx.**
+```
+
 
 [Original API docs here](https://developer.forecast.io/docs/v2)
